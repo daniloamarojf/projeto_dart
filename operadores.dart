@@ -24,7 +24,7 @@ void main() {
   print('A soma de $a + $b = $soma');
   print('a subtração de $a - $b = $subtracao');
   print('A multiplicação de $a x $b = $produto');
-  print('A divisão de $a / $b = ${divisao.toStringAsFixed(2)}');
+  print('A divisão de $a ÷ $b = ${divisao.toStringAsFixed(2)}');
   print('A divisão inteira de $a ~/ $b = $divInteira');
   print('O resto de $a % $b = $restoDivisao');
   print('-' * 70);

@@ -10,11 +10,11 @@ void main() {
   // Verificando as variáveis
   print('-' * 70);
   print('$a == $b Resultado: ${a == b}');
-  print('$a =/ $b Resultado: ${a != b}'); // =/ é apenas texto
+  print('$a ≠ $b Resultado: ${a != b}'); // =/ é apenas texto
   print('$a > $b Resultado: ${a > b}');
   print('$a < $b Resultado: ${a < b}');
-  print('$a >- $b Resultado: ${a >= b}'); // >- é apenas texto
-  print('$a <- $b Resultado: ${a <= b}'); // <- é apenas texto
+  print('$a ≥ $b Resultado: ${a >= b}'); // ≥ é apenas texto
+  print('$a ≤ $b Resultado: ${a <= b}'); // ≤ é apenas texto
 
   // Podemos atribuir esses resultados em uma variável
   bool igual = a == b;
