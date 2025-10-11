@@ -17,18 +17,6 @@ void main() {
   int soma = valor1 + valor2;
   int subtracao = valor1 - valor2;
   int produto = valor1 * valor2;
-  double divisao = valor1 / valor2;
-  int divisaoInteiro = valor1 ~/ valor2;
-  int divisaoResto = valor1 % valor2;
-
-  if (valor2 != 0) {
-    divisao = valor1 / valor2;
-    divisaoInteiro = valor1 ~/ valor2;
-    divisaoResto = valor1 % valor2;
-  } else {
-    divisao = 0;
-  }
-  
 
   print('-' * 50);
   print('Calculos');
@@ -36,13 +24,22 @@ void main() {
   print('A soma é : $soma');
   print('A subtração é: $subtracao');
   print('A multiplicação é: $produto');
-  print('A divisão é: $divisao');
-  print('A divisão inteira é: $divisaoInteiro');
-  print('O resto da divisão é: $divisaoResto');
-  print('-' * 50);
+  
 
- 
-  
-  
+  if (valor2 != 0) {
+    
+    double divisao = valor1 / valor2;
+    int divisaoInteiro = valor1 ~/ valor2;
+    int divisaoResto = valor1 % valor2;
+
+    print('A divisão é: $divisao');
+    print('A divisão inteira é: $divisaoInteiro');
+    print('O resto da divisão é: $divisaoResto');
+    print('-' * 50);
+  } else {
+    print('Erro: Divisão por zero não permitida!');
+    print('-' * 50);
+
+  }
 
 }
