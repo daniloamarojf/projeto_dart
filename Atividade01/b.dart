@@ -2,8 +2,7 @@
 // a subtração, a divisão, o resto da divisão e a divisão inteira.
 import 'dart:io';
 
-void main() { 
-
+void main() {
   print('-' * 50);
   print('Atividade "B" - Cálculos Matemáticos');
   print('-' * 50);
@@ -24,22 +23,18 @@ void main() {
   print('A soma é : $soma');
   print('A subtração é: $subtracao');
   print('A multiplicação é: $produto');
-  
 
   if (valor2 != 0) {
-    
     double divisao = valor1 / valor2;
     int divisaoInteiro = valor1 ~/ valor2;
     int divisaoResto = valor1 % valor2;
 
-    print('A divisão é: $divisao');
+    print('A divisão é: ${divisao.toStringAsFixed(2)}');
     print('A divisão inteira é: $divisaoInteiro');
     print('O resto da divisão é: $divisaoResto');
     print('-' * 50);
   } else {
     print('Erro: Divisão por zero não permitida!');
     print('-' * 50);
-
   }
-
 }

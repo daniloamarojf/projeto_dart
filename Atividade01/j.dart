@@ -55,17 +55,17 @@ void main() {
     case 1:
       double dolar = 5.47;
       double ValorDolar = valorReais / dolar;
-      print('R\$ ${valorReais} equivale à \$ ${ValorDolar}');
+      print('R\$ ${valorReais} equivale à \$ ${ValorDolar.toStringAsFixed(2)}');
       break;
     case 2:
     double euro = 6.38;
     double valorEuro = valorReais / euro;
-    print('R\$ ${valorReais} equilave à € ${valorEuro}');
+    print('R\$ ${valorReais} equilave à € ${valorEuro.toStringAsFixed(2)}');
     break;
     case 3:
       double won = 0.004;
       double valorWon = valorReais / won;
-      print('R\$ ${valorReais} equilave à w ${valorWon}');
+      print('R\$ ${valorReais} equilave à w ${valorWon.toStringAsFixed(2)}');
   }
 
 }
