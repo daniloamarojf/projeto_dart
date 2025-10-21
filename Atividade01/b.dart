@@ -8,10 +8,26 @@ void main() {
   print('-' * 50);
 
   stdout.write('Digite o 1º valor: ');
-  int valor1 = int.parse(stdin.readLineSync()!);
+  String? entrada1 = stdin.readLineSync();
 
   stdout.write('Digite o 2º valor: ');
-  int valor2 = int.parse(stdin.readLineSync()!);
+  String? entrada2 = stdin.readLineSync();
+
+  if (entrada1 == null || entrada1.isEmpty ||
+      entrada2 == null || entrada2.isEmpty) {
+      print('Valores não podem ser nulo.');
+      return;
+    }
+  int valor1;
+  int valor2;
+
+  try {
+    valor1 = int.parse(entrada1);
+    valor2 = int.parse(entrada2);
+  } catch (e) {
+    print('Entre com valores válidos');
+    return;
+  }
 
   int soma = valor1 + valor2;
   int subtracao = valor1 - valor2;
