@@ -11,8 +11,8 @@ void main() {
   while (true) {
     int valor;
     int i = 1;
-    int multiplos3 = 0;
-    int multiplos5 = 0;
+    int multiplos = 0;
+    // int multiplos5 = 0;
 
     stdout.write('Entre com um número inteiro: ');
     String? entrada = stdin.readLineSync();
@@ -29,17 +29,18 @@ void main() {
       continue;
     }
 
-    for (i; i <= valor; i++) {
+    for (i; i < valor; i++) {
       if (i % 3 == 0) {
-        multiplos3 += i;
+        multiplos += i;
+
+        if (i % 5 == 0) {
+          multiplos += i;
+        }
       }
 
-      if (i % 5 == 0) {
-        multiplos5 += i;
-      }
+      
     }
-    print('A soma dos múltiplos de 3 é: $multiplos3');
-    print('A soma dos múltiplos de 5 é: $multiplos5');
+    print('A soma dos múltiplos de 3 e 5 é: $multiplos');
 
     stdout.write('Para sair digite "s": ');
     String? resposta = stdin.readLineSync();
