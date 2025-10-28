@@ -13,7 +13,24 @@ void main() {
 
     stdout.write('Digite o ano: ');
     String? entrada = stdin.readLineSync();
-    
+
+    if (entrada == null || entrada.isEmpty) {
+      print('Ano não pode ser nulo.');
+      continue;
+    }
+
+    try {
+      ano = int.parse(entrada);
+    } catch (e) {
+      print('Entrada inválida.');
+      continue;
+    }
+
+    if (ano % 400 == 0 || ano % 4 == 0 && ano % 100 != 0) {
+      print('$ano É Bissexto');
+    } else {
+      print('$ano NÃO Bissexto');
+    }
 
     stdout.write('Digite "s" para sair ou pressione Enter para continuar: ');
     String? resposta = stdin.readLineSync();
