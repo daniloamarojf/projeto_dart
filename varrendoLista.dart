@@ -6,5 +6,6 @@ void main() {
   print('Lista de vogais');
   for (var i = 0; i < vogais.length; i++) {
     print(vogais[i]);
-  })
+  }
+  print('-' * 70);
 }
