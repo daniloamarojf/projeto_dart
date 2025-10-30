@@ -13,7 +13,7 @@ void main() {
   while (true) {
     double temperatura;
 
-    stdout.write('Temperatura inicial: ');
+    stdout.write('Temperatura inicial (c°): ');
     String? entrada = stdin.readLineSync();
 
     if (entrada == null || entrada.isEmpty) {
@@ -28,10 +28,18 @@ void main() {
       continue;
     }
 
-    for (double i = temperatura; i >= 25; i--) {
-      temperatura = i - (i * 0.02);
-      print('Temperatura: $i.');
-      sleep(Duration(seconds: 1));
+    while (true) {
+
+      temperatura -= temperatura  * 0.02;
+
+       if (temperatura < 25) {
+        print('Chegou na temperatura ambiente!');
+        break;
+      } else {
+        print('Resfriando, temperatura ${temperatura.toStringAsFixed(2)} C°');
+        sleep(Duration(seconds: 1));
+      }
+
     }
 
     stdout.write('Digite "s" para sair ou pressione Enter para continuar');
