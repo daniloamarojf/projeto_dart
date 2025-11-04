@@ -15,10 +15,16 @@ void main() {
   print('=' * 50);
 
   while (true) {
-    int soma;
     List<int> numerosInteiros = [10, 20, 30, 10, 30, 40, 50, 10, 50];
+    List<int> numerosUnicos = [];
 
-    List<int> numerosUnicos = numerosInteiros.toSet().toList();
+    for (int i = 0; i < numerosInteiros.length; i++){
+      for (int j = 0; j <= numerosInteiros.length; i++) {
+        if (i != j) {
+          numerosUnicos.add(i);
+        }
+      }
+    }
 
     print('Lista original: $numerosInteiros');
     print('Lista com elementos únicos: $numerosUnicos');
