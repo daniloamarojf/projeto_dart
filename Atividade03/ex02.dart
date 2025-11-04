@@ -1,0 +1,34 @@
+// 2. Identificação e Contagem de Ocorrências Distintas
+// Dada uma lista de inteiros que contém valores duplicados,
+// o desafio é determinar quantos valores únicos existem na lista.
+// A solução deve percorrer a lista e construir uma nova coleção
+// (ou usar um Set temporário, se permitido, ou uma lista auxiliar)
+// para armazenar apenas os elementos que ainda não foram vistos,
+// reportando o total de elementos únicos ao final.
+
+import 'dart:io';
+
+void main() {
+  // === Cabeçalho ===
+  print('=' * 50);
+  print('2. Identificação e Contagem de Ocorrências Distintas');
+  print('=' * 50);
+
+  while (true) {
+    int soma;
+    List<int> numerosInteiros = [10, 20, 30, 10, 30, 40, 50, 10, 50];
+
+    List<int> numerosUnicos = numerosInteiros.toSet().toList();
+
+    print('Lista original: $numerosInteiros');
+    print('Lista com elementos únicos: $numerosUnicos');
+
+    stdout.write('Digite "s" para sair ou  pressione Enter para continuar.');
+    String? resposta = stdin.readLineSync();
+
+    if (resposta != null && resposta.toLowerCase() == 's') {
+      print('Saindo do programa . . .');
+      break;
+    }
+  }
+}

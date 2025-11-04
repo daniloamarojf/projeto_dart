@@ -31,13 +31,16 @@ void main() {
       aceleracao = double.parse(entrada2);
     } catch (e) {
       print('Entrada inválida.');
+      continue;
     }
 
+  // 485
     for (int i = 0; i < tempo; i++) {
-      double velocidade = 
-      print('A velicidade é: ')
+      double velocidade = aceleracao * i;
+      print('$i ===> velocidade ${velocidade.toStringAsFixed(2)}');
+      sleep(Duration(seconds: 1));
     }
-      stdout.write('Digite "s" para sair ou pressione Enter para continuar.');
+    stdout.write('Digite "s" para sair ou pressione Enter para continuar.');
     String? resposta = stdin.readLineSync();
 
     if (resposta != null && resposta.toLowerCase() == 's') {
