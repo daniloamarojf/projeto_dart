@@ -16,20 +16,13 @@ void main() {
 
   while (true) {
     List<int> numerosInteiros = [10, 20, 30, 10, 30, 40, 50, 10, 50];
-    List<int> numerosUnicos = [];
+    List<int> numerosUnicos = numerosInteiros.toSet().toList();
 
-    for (int i = 0; i < numerosInteiros.length; i++){
-      for (int j = 0; j <= numerosInteiros.length; i++) {
-        if (i != j) {
-          numerosUnicos.add(i);
-        }
-      }
-    }
+    print('===> Lista original: $numerosInteiros');
+    print('===> Lista com elementos únicos: $numerosUnicos');
+    print('Quantidade de elementos únicos: ${numerosUnicos.length}');
 
-    print('Lista original: $numerosInteiros');
-    print('Lista com elementos únicos: $numerosUnicos');
-
-    stdout.write('Digite "s" para sair ou  pressione Enter para continuar.');
+    stdout.write('Digite "s" para sair ou  pressione Enter para ver novamente.');
     String? resposta = stdin.readLineSync();
 
     if (resposta != null && resposta.toLowerCase() == 's') {
