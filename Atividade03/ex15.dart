@@ -1,5 +1,6 @@
-// 15. Contagem de Ocorrências de Status
-// Dada uma lista de Maps, onde cada Map representa uma tarefa com a
-// chave "status" (String), conte e imprima o número total de tarefas
-// para cada status distinto.
+// 15. Particionamento de Lista em Positivos e Não-Positivos
+// Dada uma lista de números inteiros (positivos, negativos e zero),
+// crie uma nova lista onde todos os números positivos aparecem primeiro,
+// seguidos pelos números não-positivos (zero e negativos).
+// A ordem relativa dentro de cada grupo deve ser mantida.
 

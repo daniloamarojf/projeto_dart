@@ -1,6 +1,5 @@
-// 12. Cálculo de Estoque Total de Produtos Ativos
-// Dada uma lista de Maps, onde cada Map representa um produto com as
-// chaves "nome" (String), "estoque" (int) e "ativo" (bool), calcule a
-// soma total do estoque de todos os produtos que estão com o status
-// "ativo" igual a true.
+// 12. Normalização e Classificação de Dados
+// Dada uma lista de strings com valores duplicados e em ordem 
+// aleatória, o objetivo é primeiro remover todas as duplicatas e, 
+// em seguida, ordenar a lista resultante em ordem alfabética.
 

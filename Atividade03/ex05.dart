@@ -41,9 +41,24 @@ void main() {
 
     print('===> Lista de números: $numeros');
 
+    // === Usando o to.set() para eliminar os elementos repetidos
+    // === Usando o to.List() voltar a ser uma lista
     List<int> numerosOrdenados = numeros.toSet().toList();
-    numerosOrdenados.sort();
 
-    print('===> O segundo maior valor é: ${numerosOrdenados.length - 1}');
+    numerosOrdenados.sort(); // Usando o sort() para ordenar
+
+    // Variável para receber a penúltimo elemento
+    int penultimo = numerosOrdenados[numerosOrdenados.length -2]; 
+
+    print('===> O segundo maior valor é: $penultimo');
+
+    // === Opção para sair ou continuar
+    stdout.write('Digite "s" para sair ou  pressione Enter para ver novamente.');
+    String? resposta = stdin.readLineSync();
+
+    if (resposta != null && resposta.toLowerCase() == 's') {
+      print('Saindo do programa . . .');
+      break;
+    }
   }
 }
