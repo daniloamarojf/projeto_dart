@@ -19,6 +19,18 @@ void main() {
   print('VARREDURA COM key');
   print('' * 70);
   for (String chave in meuMap2.keys) {
-    dynamic valor = meuMap2[chave];
+    dynamic valor = meuMap2[chave]; // busca o valor correspondente à chave
+    print('$chave: $valor');
   }
+  print('-' * 70);
+
+  // 3. Usando values -> percorre apenas os valores do Map
+  Map<String, dynamic> meuMap3 = {'Nome': 'John Doe', 'nascimento': 1970};
+
+  print('VARREDUR COM values');
+  print('-' * 70);
+  for (var valor in meuMap3.values) {
+    print(valor);
+  }
+  print('-' * 70);
 }
