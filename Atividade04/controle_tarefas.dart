@@ -19,6 +19,7 @@ import 'dart:io';
 
 void main() {
   List<Map<String, dynamic>> tarefas = [];
+  List<Map<String, dynamic>> tarefasConcluidas = [];
 
   print('*' * 50);
   print('- - - CONTROLE DE TAREFAS - - -');
@@ -66,7 +67,7 @@ void main() {
           tarefas.add({
             'titulo': titulo,
             'descricao': descricao,
-            'status': 'false',
+            'status': false,
           });
           print('Tarefa adicionada com sucesso!\n');
         }
@@ -118,6 +119,7 @@ void main() {
               );
             }
 
+
             stdout.write('Deseja marcar TAREFA como CONCLUIDA (s/n)?: ');
             String? resposta2 = stdin.readLineSync();
 
@@ -143,6 +145,8 @@ void main() {
               print('Tarefa marcada como concluida.\n');
               print(tarefas);
 
+              
+
               // stdout.write('Deseja marcar outra tarefa como concluida: (s/n)?: ');
               // String? resposta3 = stdin.readLineSync();
 
@@ -152,7 +156,24 @@ void main() {
               // }
             }
           }
+        } else if (opcao == 2) {
+
+          if (tarefas.isEmpty) {
+            print('===> Nenhuma tarefa cadastada.\n');
+          } else {
+            tarefasConcluidas = tarefas.where((tarefa) => tarefa['status'] == true).toList();
+            print('* * * Tarefas Concluídas * * *');
+            for (int i = 0; i < tarefasConcluidas.length; i++) {
+              var listaConcluida = tarefasConcluidas[i];
+
+              print('${i + 1}. Titulo: ${listaConcluida['titulo']}'' Descrição: ${listaConcluida['descricao']}'' Status: ${listaConcluida['status']}\n');
+            }
+          }
+
         }
+        stdout.write('Pressione ENTER para voltar...');
+        stdin.readLineSync();
+        break; 
       }
 
       // while (true) {
