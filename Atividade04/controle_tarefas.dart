@@ -19,7 +19,6 @@ import 'dart:io';
 
 void main() {
   List<Map<String, dynamic>> tarefas = [];
-  List<Map<String, dynamic>> tarefasConcluidas = [];
 
   print('*' * 50);
   print('- - - CONTROLE DE TAREFAS - - -');
@@ -161,7 +160,7 @@ void main() {
           if (tarefas.isEmpty) {
             print('===> Nenhuma tarefa cadastada.\n');
           } else {
-            tarefasConcluidas = tarefas.where((tarefa) => tarefa['status'] == true).toList();
+            List<Map> tarefasConcluidas = tarefas.where((tarefa) => tarefa['status'] == true).toList();
             print('* * * Tarefas Concluídas * * *');
             for (int i = 0; i < tarefasConcluidas.length; i++) {
               var listaConcluida = tarefasConcluidas[i];
