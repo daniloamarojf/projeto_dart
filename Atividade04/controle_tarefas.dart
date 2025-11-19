@@ -71,7 +71,7 @@ void main() {
           print('Tarefa adicionada com sucesso!\n');
         }
 
-        stdout.write('Deseja incluir outra pessoa (s/n)?: ');
+        stdout.write('Deseja incluir outra tarefa (s/n)?: ');
         String? resposta = stdin.readLineSync();
 
         if (resposta == null || resposta.toLowerCase() != 's') {
@@ -109,125 +109,87 @@ void main() {
           if (tarefas.isEmpty) {
             print('===> Nenhuma tarefa cadastada.\n');
           } else {
+            List<Map> tarefasPendentes =
+                tarefas.where((tarefa) => tarefa['status'] == false).toList();
+
             print('* * * Tarefas pendentes * * *');
-            for (int i = 0; i < tarefas.length; i++) {
-              var lista = tarefas[i];
+            for (int i = 0; i < tarefasPendentes.length; i++) {
+              var lista = tarefasPendentes[i];
 
               print(
                 '${i + 1}. Titulo: ${lista['titulo']} Descrição: ${lista['descricao']} Status:${lista['status']}\n',
               );
             }
 
+            while (true) {
+              stdout.write(
+                  'Deseja marcar alguma TAREFA como CONCLUIDA (s/n)?: ');
+              String? resposta2 = stdin.readLineSync();
 
-            stdout.write('Deseja marcar TAREFA como CONCLUIDA (s/n)?: ');
-            String? resposta2 = stdin.readLineSync();
+              if (resposta2 != null && resposta2.toLowerCase() == 's') {
+                stdout.write('Qual tarefa deseja marcar como concluida? ');
+                String? respostaConcluida = stdin.readLineSync();
 
-            if (resposta2 != null && resposta2.toLowerCase() == 's') {
-              stdout.write('Qual tarefa deseja marcar como concluida? ');
-              String? entrada2 = stdin.readLineSync();
+                if (respostaConcluida == null ||
+                    respostaConcluida.isEmpty) {
+                  print('Opção não pode se nula. Escolha uma tarefa.\n');
+                  continue;
+                }
 
-              if (entrada2 == null || entrada2.isEmpty) {
-                print('Opção não pode se nula. Escolha uma tarefa.\n');
+                int indice;
+
+                try {
+                  indice = int.parse(respostaConcluida);
+                } catch (e) {
+                  print('Tarefa não existe. Escolha uma tarefa.\n');
+                  continue;
+                }
+
+                tarefas[indice - 1]['status'] = true;
+                print('Tarefa marcada como concluida.\n');
                 continue;
+              } else {
+                break;
               }
-
-              int indice;
-
-              try {
-                indice = int.parse(entrada2);
-              } catch (e) {
-                print('Tarefa não existe. Escolha uma tarefa.\n');
-                continue;
-              }
-
-              tarefas[indice - 1]['status'] = true;
-              print('Tarefa marcada como concluida.\n');
-              print(tarefas);
-
-              
-
-              // stdout.write('Deseja marcar outra tarefa como concluida: (s/n)?: ');
-              // String? resposta3 = stdin.readLineSync();
-
-              // if (resposta3 == null || resposta3.toLowerCase() != 's') {
-              //   print('\nVoltando ao menu . . .\n');
-              //   break;
-              // }
             }
           }
         } else if (opcao == 2) {
-
           if (tarefas.isEmpty) {
             print('===> Nenhuma tarefa cadastada.\n');
           } else {
-            List<Map> tarefasConcluidas = tarefas.where((tarefa) => tarefa['status'] == true).toList();
+            List<Map> tarefasConcluidas =
+                tarefas.where((tarefa) => tarefa['status'] == true).toList();
+
             print('* * * Tarefas Concluídas * * *');
             for (int i = 0; i < tarefasConcluidas.length; i++) {
               var listaConcluida = tarefasConcluidas[i];
 
-              print('${i + 1}. Titulo: ${listaConcluida['titulo']}'' Descrição: ${listaConcluida['descricao']}'' Status: ${listaConcluida['status']}\n');
+              print(
+                  '${i + 1}. Titulo: ${listaConcluida['titulo']} Descrição: ${listaConcluida['descricao']} Status: ${listaConcluida['status']}\n');
+            }
+
+            stdout.write(
+                'Deseja EXCLUIR as tarefas CONCLUÍDAS (s/n)?');
+            String? respostaExclusao = stdin.readLineSync();
+
+            if (respostaExclusao != null &&
+                respostaExclusao.toLowerCase() == 's') {
+              stdout.write(
+                  'Todas as tarefas CONCLUÍDAS serão apagadas. Confirma essa ação? (s/n) ');
+              String? respostaConfirmacao = stdin.readLineSync();
+
+              if (respostaConfirmacao == null ||
+                  respostaConfirmacao.isEmpty) {
+                print('Opção não pode se nula. Escolha uma tarefa.\n');
+                continue;
+              }
+
+              tarefas.removeWhere(
+                  (tarefas) => tarefas['status'] == true);
             }
           }
-
         }
-        stdout.write('Pressione ENTER para voltar...');
-        stdin.readLineSync();
-        break; 
       }
-
-      // while (true) {
-      //   print('------ Escolha uma Opção: -------');
-      //   print('1 - Marcar tarefas como concluida');
-      //   print('2 - Excluir tarefas concluidas');
-      //   print('3 - Voltar ao CONTROLE DE TAREFAS\n');
-
-      //   stdout.write('Escolha uma opção: ');
-      //   String? entrada = stdin.readLineSync();
-
-      //   if (entrada == null || entrada.isEmpty) {
-      //     print('Opção não pode se nula. Escolha uma opção.\n');
-      //     continue;
-      //   }
-
-      //   int opcao;
-
-      //   try {
-      //     opcao = int.parse(entrada);
-      //   } catch (e) {
-      //     print('Opção inválida. Escolha uma opção.\n');
-      //     continue;
-      //   }
-
-      //   if (opcao == 1) {
-      //     stdout.write('Qual tarefa deseja marcar como concluida? ');
-      //     String? entrada = stdin.readLineSync();
-
-      //     if (entrada == null || entrada.isEmpty) {
-      //       print('Opção não pode se nula. Escolha uma tarefa.\n');
-      //       continue;
-      //     }
-
-      //     int indice;
-
-      //     try {
-      //       indice = int.parse(entrada);
-      //     } catch (e) {
-      //       print('Tarefa não existe. Escolha uma tarefa.\n');
-      //       continue;
-      //     }
-
-      //     tarefas[indice - 1]['status'] = true;
-      //     print('Tarefa marcada como concluida.\n');
-
-      //     stdout.write('Deseja marcar outra tarefa como concluida: (s/n)?: ');
-      //     String? resposta = stdin.readLineSync();
-
-      //     if (resposta == null || resposta.toLowerCase() != 's') {
-      //       print('\nVoltando ao menu . . .\n');
-      //       break;
-      //     }
-      //   }
-      // }
     }
   }
 }
