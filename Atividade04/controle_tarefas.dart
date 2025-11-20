@@ -105,9 +105,11 @@ void main() {
           continue;
         }
 
+
+        
         if (opcao == 1) {
           if (tarefas.isEmpty) {
-            print('===> Nenhuma tarefa cadastada.\n');
+            print('===> Nenhuma tarefa pendente.\n');
           } else {
             List<Map> tarefasPendentes =
                 tarefas.where((tarefa) => tarefa['status'] == false).toList();
@@ -149,16 +151,18 @@ void main() {
                 print('Tarefa marcada como concluida.\n');
                 continue;
               } else {
+                print('\nVoltando ao menu principal');
                 break;
               }
             }
+            break;
           }
         } else if (opcao == 2) {
-          if (tarefas.isEmpty) {
-            print('===> Nenhuma tarefa cadastada.\n');
+          List<Map> tarefasConcluidas =tarefas.where((tarefa) => tarefa['status'] == true).toList();
+          if (tarefasConcluidas.isEmpty) {
+            print('===> Nenhuma tarefa concluida.\n');
           } else {
-            List<Map> tarefasConcluidas =
-                tarefas.where((tarefa) => tarefa['status'] == true).toList();
+            
 
             print('* * * Tarefas Concluídas * * *');
             for (int i = 0; i < tarefasConcluidas.length; i++) {
@@ -188,6 +192,8 @@ void main() {
                   (tarefas) => tarefas['status'] == true);
             }
           }
+          print('\nVoltando ao menu principal');
+          break;
         }
       }
     }
