@@ -1,19 +1,19 @@
 //  Controle de tarefas do dia a dia
-// - Armazenar tarefa como objeto do Map.
-// - Chaves: titulo, descrição e concluida
-// - Tarefa deve ser armazenada dentro de uma lista.
-// - Adicionar tarefas
-// - Listar tarefas
-// - Marcar tarefa como concluida
-// - Excluir as finalizadas
-// - Validações nulas e vazias
-// - Condiconais e repetição para menu.
+// - Armazenar tarefa como objeto do Map............... OK
+// - Chaves: titulo, descrição e concluida............. OK
+// - Tarefa deve ser armazenada dentro de uma lista.... OK
+// - Adicionar tarefas................................. OK
+// - Listar tarefas.................................... OK
+// - Marcar tarefa como concluida...................... OK
+// - Excluir as finalizadas............................ OK
+// - Validações nulas e vazias......................... ??
+// - Condiconais e repetição para menu................. ??925
 
 // Resumo:
-// - Tarefas pendentes
-// - Tarefas concluidas
+// - Tarefas pendentes................................. OK
+// - Tarefas concluidas................................ OK
 
-// * Filtro de busca por título ultilizando o metodo .where
+// * Filtro de busca por título ultilizando o metodo .where.. OK
 
 import 'dart:io';
 
@@ -193,3 +193,10 @@ void main() {
     }
   }
 }
+
+
+// ===> Deseja marcar alguma tarefa como concluida?
+//  (Aqui é preciso que o sistema volte no menu principal)
+
+//===> Se não hover tarefas concluidas 
+//  (Informar que na tabela não há tarefas concluidas)
