@@ -47,7 +47,7 @@ void main() {
       continue;
     }
 
-    // === Incluir tarefas ====
+    // ====== Incluir tarefas =======
     if (opcao == 1) {
       while (true) {
         stdout.write('Título da tarefa: ');
@@ -80,13 +80,13 @@ void main() {
         }
       }
 
-      // === Visualizar as tarefas ===
+      // ====== Visualizar as tarefas ======
     } else if (opcao == 2) {
       while (true) {
         print('\nMENU LISTAR');
         print('1 - Listar tarefas pendentes.');
         print('2 - Listar tarefas concluidas.');
-        print('3 - Sair\n');
+        print('3 - Listar todas as tarefas\n');
 
         stdout.write('Escolha uma opção: ');
         String? entrada = stdin.readLineSync();
@@ -105,35 +105,38 @@ void main() {
           continue;
         }
 
-
-        
+        // ====== Visualizar somente as tarefas pendentes ======
         if (opcao == 1) {
           if (tarefas.isEmpty) {
             print('===> Nenhuma tarefa pendente.\n');
           } else {
-            List<Map> tarefasPendentes =
-                tarefas.where((tarefa) => tarefa['status'] == false).toList();
+            List<Map> tarefasPendentes = tarefas
+                .where((tarefa) => tarefa['status'] == false)
+                .toList();
 
             print('* * * Tarefas pendentes * * *');
+
             for (int i = 0; i < tarefasPendentes.length; i++) {
               var lista = tarefasPendentes[i];
 
+              String statusTexto = lista['status'] ? 'Concluída' : 'Pendente';
               print(
-                '${i + 1}. Titulo: ${lista['titulo']} Descrição: ${lista['descricao']} Status:${lista['status']}\n',
+                '${i + 1}. Titulo: ${lista['titulo']} Descrição: ${lista['descricao']} Status:$statusTexto}\n',
               );
             }
 
+            // ====== Marcar tarefas como concluída ======
             while (true) {
               stdout.write(
-                  'Deseja marcar alguma TAREFA como CONCLUIDA (s/n)?: ');
+                'Deseja marcar alguma TAREFA como CONCLUIDA (s/n)?: ',
+              );
               String? resposta2 = stdin.readLineSync();
 
               if (resposta2 != null && resposta2.toLowerCase() == 's') {
                 stdout.write('Qual tarefa deseja marcar como concluida? ');
                 String? respostaConcluida = stdin.readLineSync();
 
-                if (respostaConcluida == null ||
-                    respostaConcluida.isEmpty) {
+                if (respostaConcluida == null || respostaConcluida.isEmpty) {
                   print('Opção não pode se nula. Escolha uma tarefa.\n');
                   continue;
                 }
@@ -157,52 +160,69 @@ void main() {
             }
             break;
           }
+
+          // ====== Visualizar somente as tarefas concluídas ======
         } else if (opcao == 2) {
-          List<Map> tarefasConcluidas =tarefas.where((tarefa) => tarefa['status'] == true).toList();
+          List<Map> tarefasConcluidas = tarefas
+              .where((tarefa) => tarefa['status'] == true)
+              .toList();
           if (tarefasConcluidas.isEmpty) {
             print('===> Nenhuma tarefa concluida.\n');
           } else {
-            
-
             print('* * * Tarefas Concluídas * * *');
             for (int i = 0; i < tarefasConcluidas.length; i++) {
               var listaConcluida = tarefasConcluidas[i];
 
+              String statusTexto = listaConcluida['status']
+                  ? 'Concluída'
+                  : 'Pendente';
               print(
-                  '${i + 1}. Titulo: ${listaConcluida['titulo']} Descrição: ${listaConcluida['descricao']} Status: ${listaConcluida['status']}\n');
+                '${i + 1}. Titulo: ${listaConcluida['titulo']} Descrição: ${listaConcluida['descricao']} Status: $statusTexto\n',
+              );
             }
 
-            stdout.write(
-                'Deseja EXCLUIR as tarefas CONCLUÍDAS (s/n)?');
+            // ====== Excluir tarefas concluídas ======
+            stdout.write('Deseja EXCLUIR as tarefas CONCLUÍDAS (s/n)?');
             String? respostaExclusao = stdin.readLineSync();
 
             if (respostaExclusao != null &&
                 respostaExclusao.toLowerCase() == 's') {
               stdout.write(
-                  'Todas as tarefas CONCLUÍDAS serão apagadas. Confirma essa ação? (s/n) ');
+                'Todas as tarefas CONCLUÍDAS serão apagadas. Confirma essa ação? (s/n) ',
+              );
               String? respostaConfirmacao = stdin.readLineSync();
 
-              if (respostaConfirmacao == null ||
-                  respostaConfirmacao.isEmpty) {
+              if (respostaConfirmacao == null || respostaConfirmacao.isEmpty) {
                 print('Opção não pode se nula. Escolha uma tarefa.\n');
                 continue;
               }
 
-              tarefas.removeWhere(
-                  (tarefas) => tarefas['status'] == true);
+              tarefas.removeWhere((tarefas) => tarefas['status'] == true);
+              print('Todas as tarefas concluídas foram excluídas.');
             }
           }
           print('\nVoltando ao menu principal');
           break;
+
+          // ====== Visualizar todas as tarefas ======
+        } else if (opcao == 3) {
+          if (tarefas.isEmpty) {
+            print('===> Nenhuma tarefa pendente.\n');
+          } else {
+            print('* * * Tarefas pendentes e concluídas * * *');
+
+            for (int i = 0; i < tarefas.length; i++) {
+              var lista = tarefas[i];
+
+              String statusTexto = lista['status'] ? 'Concluída' : 'Pendente';
+              print(
+                '${i + 1}. Titulo: ${lista['titulo']} Descrição: ${lista['descricao']} Status:$statusTexto}\n',
+              );
+            }
+            break;
+          }
         }
       }
     }
   }
 }
-
-
-// ===> Deseja marcar alguma tarefa como concluida?
-//  (Aqui é preciso que o sistema volte no menu principal)
-
-//===> Se não hover tarefas concluidas 
-//  (Informar que na tabela não há tarefas concluidas)

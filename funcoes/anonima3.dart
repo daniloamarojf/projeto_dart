@@ -1,0 +1,11 @@
+void main() {
+  print('-' * 70);
+  print('EXEMPLO DE FUNÇÃO ANÔNIMA: AVANÇADA');
+  print('-' * 70);
+
+  var lista = [1, 2, 3, 4, 5];
+
+  //.isOdd é uma propriedade fornecida pela classe int em DArt
+  // que retorna true se o número for ímpar e false s for par
+  var novaLista = lista.where()
+}
