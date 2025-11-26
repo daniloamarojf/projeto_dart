@@ -219,10 +219,14 @@ void main() {
                 '${i + 1}. Titulo: ${lista['titulo']} Descrição: ${lista['descricao']} Status:$statusTexto}\n',
               );
             }
+            print('\nVoltando ao menu principal');
             break;
           }
         }
       }
+    } else {
+      print('Saindo do Programa...');
+      break;
     }
   }
 }
