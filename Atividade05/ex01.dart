@@ -5,22 +5,10 @@
 // total desses números restantes.
 import 'dart:io';
 
-void main() {
-  // === Cabeçalho ===
-  print('=' * 50);
-  print('1. Filtragem e Soma Condicional de Pares');
-  print('=' * 50);
-
-  while (true) {
-    // === Declarando variáveis e listas ===
-    int num1 = 0;
-    int num2 = 0;
-    int soma = 0;
-    List<int> numerosSomados = [];
-    List<int> numerosInteiros = [];
-
-    // === Entrada de dados ====
+// === Entrada de dados ====
     void entradaDados() {
+      int num1 = 0;
+      int num2 = 0;
       for (int i = 0; i <= 1; i++) {
         stdout.write('Digite o ${i + 1}º número da lista de interios: ');
         String? entrada = stdin.readLineSync();
@@ -47,24 +35,41 @@ void main() {
     }
 
     // === Adicionando os números à lista ===
-    void adicionarLista() {
+    adicionarLista(num1, num2) {
+      List<int> numerosInteiros = [];
       for (int i = num1; i <= num2; i++) {
         numerosInteiros.add(i);
       }
+      return (numerosInteiros);
     }
 
     // === Filtrando números pares e maiores que dez ===
-    void filtrarDados() {
+    filtrarDados() {    
+      int soma = 0;
+      List<int> numerosSomados = [];
+
       for (int i in numerosInteiros) {
         if (i % 2 == 0 && i > 10) {
           numerosSomados.add(i);
           soma += i;
         }
       }
+      return (numerosSomados, soma);
     }
 
+void main() {
+  // === Cabeçalho ===
+  print('=' * 50);
+  print('1. Filtragem e Soma Condicional de Pares');
+  print('=' * 50);
+
+  while (true) {
+    // === Declarando variáveis e listas ===
+    
+
+    
     entradaDados();
-    adicionarLista();
+    adicionarLista(num1, num2);
     filtrarDados();
 
     // === Print dos resultados
