@@ -7,5 +7,11 @@ void main() {
 
   //.isOdd é uma propriedade fornecida pela classe int em DArt
   // que retorna true se o número for ímpar e false s for par
-  var novaLista = lista.where()
+  var novaLista = lista
+      .where((numero) {
+        return numero.isOdd;}) // Busca
+      .map((numero) => numero * 2) // Retorno com cálculo
+      .toList();
+
+  print(novaLista);
 }
