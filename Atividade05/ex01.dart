@@ -6,7 +6,7 @@
 import 'dart:io';
 
 // === Entrada de dados ====
-    void entradaDados() {
+    List<int> entradaDados() {
       int num1 = 0;
       int num2 = 0;
       for (int i = 0; i <= 1; i++) {
@@ -35,7 +35,7 @@ import 'dart:io';
     }
 
     // === Adicionando os números à lista ===
-    adicionarLista(num1, num2) {
+    List<int> adicionarLista(num1, num2) {
       List<int> numerosInteiros = [];
       for (int i = num1; i <= num2; i++) {
         numerosInteiros.add(i);
@@ -44,7 +44,7 @@ import 'dart:io';
     }
 
     // === Filtrando números pares e maiores que dez ===
-    filtrarDados() {    
+    List filtrarDados(List<int> numerosInterios) {    
       int soma = 0;
       List<int> numerosSomados = [];
 
@@ -54,7 +54,7 @@ import 'dart:io';
           soma += i;
         }
       }
-      return (numerosSomados, soma);
+      return [numerosSomados, soma];
     }
 
 void main() {
