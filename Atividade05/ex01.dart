@@ -5,57 +5,58 @@
 // total desses números restantes.
 import 'dart:io';
 
-// === Entrada de dados ====
-    List<int> entradaDados() {
-      int num1 = 0;
-      int num2 = 0;
-      for (int i = 0; i <= 1; i++) {
-        stdout.write('Digite o ${i + 1}º número da lista de interios: ');
-        String? entrada = stdin.readLineSync();
+// === Função para entrada de dados ====
+List<int> entradaDados() {
+  List<int> numerosInteiros = [];
+  int num1 = 0;
+  int num2 = 0;
+  for (int i = 0; i <= 1; i++) {
+    stdout.write('Digite o ${i + 1}º número da lista de inteiros: ');
+    String? entrada = stdin.readLineSync();
 
-        // Fazendo o tratamento da variável ===
-        if (entrada == null || entrada.isEmpty) {
-          print('Valor não podem ser nulos');
-          i--;
-          continue;
-        }
-
-        try {
-          if (i == 0) {
-            num1 = int.parse(entrada);
-          } else {
-            num2 = int.parse(entrada);
-          }
-        } catch (e) {
-          print('Entrada inválida.');
-          i--;
-          continue;
-        }
-      }
+    // Fazendo o tratamento da variável ===
+    if (entrada == null || entrada.isEmpty) {
+      print('Valores não podem ser nulos');
+      i--;
+      continue;
     }
 
-    // === Adicionando os números à lista ===
-    List<int> adicionarLista(num1, num2) {
-      List<int> numerosInteiros = [];
-      for (int i = num1; i <= num2; i++) {
-        numerosInteiros.add(i);
+    try {
+      if (i == 0) {
+        num1 = int.parse(entrada);
+      } else {
+        num2 = int.parse(entrada);
       }
-      return (numerosInteiros);
+    } catch (e) {
+      print('Entrada inválida.');
+      i--;
+      continue;
     }
+  }
 
-    // === Filtrando números pares e maiores que dez ===
-    List filtrarDados(List<int> numerosInterios) {    
-      int soma = 0;
-      List<int> numerosSomados = [];
+  //====== Adicionando os números à lista ======
+  for (int i = num1; i <= num2; i++) {
+    numerosInteiros.add(i);
+  }
+  print('===> Tabela original: $numerosInteiros');
+  return numerosInteiros;
+}
 
-      for (int i in numerosInteiros) {
-        if (i % 2 == 0 && i > 10) {
-          numerosSomados.add(i);
-          soma += i;
-        }
-      }
-      return [numerosSomados, soma];
+//====== Função para filtrar os numeros pares e maiores que dez ====== 
+List filtrarDados(List<int> numerosInteiros) {
+  int soma = 0;
+  List<int> numerosSomados = [];
+
+  for (int i in numerosInteiros) {
+    if (i % 2 == 0 && i > 10) {
+      numerosSomados.add(i);
+      soma += i;
     }
+  }
+  print('===> Números pares e maiores que dez: $numerosSomados');
+  print('===> A soma dos números é: $soma');
+  return [numerosSomados, soma];
+}
 
 void main() {
   // === Cabeçalho ===
@@ -64,18 +65,10 @@ void main() {
   print('=' * 50);
 
   while (true) {
-    // === Declarando variáveis e listas ===
     
-
-    
-    entradaDados();
-    adicionarLista(num1, num2);
-    filtrarDados();
-
-    // === Print dos resultados
-    print('===> Lista original: $numerosInteiros');
-    print('===> Lista com números pares e maiores que dez: $numerosSomados');
-    print('===> A soma dos número é: $soma');
+    // ====== Chamando as funções ======
+    List<int> numerosInteiros = entradaDados();
+    filtrarDados(numerosInteiros);
 
     // Opção para sair ou continuar
     stdout.write('Digite "s" para sair ou pressione Enter para continuar');
