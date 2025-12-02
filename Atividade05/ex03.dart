@@ -67,10 +67,13 @@ void main() {
   print('=' * 50);
 
    
-  List maiores = encontrarMaiores(entradaDados());
-  mediaNotas(maiores);
+  
 
   while (true) {
+    
+    List maiores = encontrarMaiores(entradaDados());
+    mediaNotas(maiores);
+
     // Opção para sair ou continuar
     stdout.write('Digite "s" para sair ou pressione Enter para continuar');
     String? resposta = stdin.readLineSync();
