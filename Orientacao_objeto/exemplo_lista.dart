@@ -82,7 +82,7 @@ String lerHora() {
   RegExp exp = RegExp(r'\d{2}:\d{2}$'); // Horas:Minutos
 
   do {
-    hora = lerHora('Hora (HH:MM): ');
+    hora = lerEntrada('Hora (HH:MM): ');
     if (!exp.hasMatch(hora)) {
       print('Formato inválido! Use HH:MM. Ex. 10:10');
     }
@@ -109,19 +109,35 @@ void main() {
 
     switch (opcao) {
       case 1:
-      print('\n--- NOVO COMPROMISSO ---');
+        print('\n--- NOVO COMPROMISSO ---');
 
-      // Coleta e validação dos dados
-      String titulo = lerEntrada('Titulo: ');
-      String data = lerData();
-      String hora = lerHora();
-      String descricao = lerEntrada('Descrição');
+        // Coleta e validação dos dados
+        String titulo = lerEntrada('Titulo: ');
+        String data = lerData();
+        String hora = lerHora();
+        String descricao = lerEntrada('Descrição');
 
-      // Criação de objeto Compromisso
-      Compromisso novo = Compromisso(titulo: titulo, data: data, hora: hora, descricao: descricao,);
+        // Criação de objeto Compromisso
+        Compromisso novo = Compromisso(
+          titulo: titulo,
+          data: data,
+          hora: hora,
+          descricao: descricao,
+        );
 
-      // Adicionando à agenda
-      agenda.adicionarCompromisso(novo);
+        // Adicionando à agenda
+        agenda.adicionarCompromisso(novo);
+        break;
+
+      case 2:
+        // Listar compromissos cadastrados
+        agenda.listarCompromisssos();
+        break;
+
+      case 3:
+        print('\nOpção invélida. tente novemante.');
     }
-  }
+    // faz com que o programa continue repetindo o menu enquanto a
+    // variável opção for diferente de 3.
+  } while (opcao != 3);
 }
