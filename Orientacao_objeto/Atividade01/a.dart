@@ -62,6 +62,7 @@ class Calculos {
         numero = int.parse(entrada);
       } catch (e) {
         print('Entarda inválida!');
+        continue;
       }
 
       if (i == 1) {
@@ -78,4 +79,10 @@ class Calculos {
 void main() {
   var calculos = Calculos();
   calculos.entradaDados();
+  calculos.somar();
+  calculos.subtrair();
+  calculos.multiplicar();
+  calculos.dividir();
+  calculos.dividirResto();
+  calculos.dividirInteiro();
 }
